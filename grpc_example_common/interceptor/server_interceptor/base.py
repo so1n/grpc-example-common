@@ -4,7 +4,7 @@ import uuid
 from typing import Any, Callable, Tuple
 
 import grpc
-from book_grpc_service.helper.context import WithContext, context_proxy
+from grpc_example_common.helper.context import WithContext, context_proxy
 
 logger: logging.Logger = logging.getLogger()
 
