@@ -3,6 +3,9 @@ name = "grpc_example_common"
 version = "0.1.0"
 description = ""
 authors = ["so1n <qaz6803609@163.com>"]
+readme = "./README.md"
+repository = "https://github.com/so1n/grpc-example-common"
+homepage = "https://github.com/so1n/grpc-example-common"
 
 
 [tool.poetry.dependencies]
@@ -26,7 +29,7 @@ autoflake = "^1.4"
 
 [tool.black]
 line-length = 120
-target-version = ['py38']
+target-version = ['py37']
 
 [tool.isort]
 profile = "black"
@@ -47,7 +50,7 @@ source = ["."]
 omit = [
     ".venv/*",  "venv/*",
     "tests/*",
-    "grpc_handler/*",
+    "grpc_example_common/*",
 ]
 
 [tool.coverage.report]
