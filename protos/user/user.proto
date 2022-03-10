@@ -31,13 +31,18 @@ message LogoutUserRequest {
   string uid = 1;
   string token = 2;
 }
+
 // check login
-message CheckLoginResult {
-  bool result = 1;
+message GetUidByTokenRequest {
+  string token = 1;
+}
+// check login
+message GetUidByTokenResult {
+  string uid = 1;
 }
 
 service User {
-  rpc check_user_login (LogoutUserRequest) returns (CheckLoginResult);
+  rpc get_uid_by_token (GetUidByTokenRequest) returns (GetUidByTokenResult);
   rpc logout_user (LogoutUserRequest) returns (google.protobuf.Empty);
   rpc login_user(LoginUserRequest) returns (LoginUserResult);
   rpc create_user(CreateUserRequest) returns (google.protobuf.Empty);

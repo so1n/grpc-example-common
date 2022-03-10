@@ -9,56 +9,57 @@ import protos.user.user_pb2
 
 class UserStub:
     def __init__(self, channel: grpc.Channel) -> None: ...
-    check_user_login: grpc.UnaryUnaryMultiCallable[
-        protos.user.user_pb2.LogoutUserRequest, protos.user.user_pb2.CheckLoginResult
-    ] = ...
+    get_uid_by_token: grpc.UnaryUnaryMultiCallable[
+        protos.user.user_pb2.GetUidByTokenRequest,
+        protos.user.user_pb2.GetUidByTokenResult] = ...
 
     logout_user: grpc.UnaryUnaryMultiCallable[
-        protos.user.user_pb2.LogoutUserRequest, google.protobuf.empty_pb2.Empty
-    ] = ...
+        protos.user.user_pb2.LogoutUserRequest,
+        google.protobuf.empty_pb2.Empty] = ...
 
     login_user: grpc.UnaryUnaryMultiCallable[
-        protos.user.user_pb2.LoginUserRequest, protos.user.user_pb2.LoginUserResult
-    ] = ...
+        protos.user.user_pb2.LoginUserRequest,
+        protos.user.user_pb2.LoginUserResult] = ...
 
     create_user: grpc.UnaryUnaryMultiCallable[
-        protos.user.user_pb2.CreateUserRequest, google.protobuf.empty_pb2.Empty
-    ] = ...
+        protos.user.user_pb2.CreateUserRequest,
+        google.protobuf.empty_pb2.Empty] = ...
 
     delete_user: grpc.UnaryUnaryMultiCallable[
-        protos.user.user_pb2.DeleteUserRequest, google.protobuf.empty_pb2.Empty
-    ] = ...
+        protos.user.user_pb2.DeleteUserRequest,
+        google.protobuf.empty_pb2.Empty] = ...
+
 
 class UserServicer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def check_user_login(
-        self,
-        request: protos.user.user_pb2.LogoutUserRequest,
+    def get_uid_by_token(self,
+        request: protos.user.user_pb2.GetUidByTokenRequest,
         context: grpc.ServicerContext,
-    ) -> protos.user.user_pb2.CheckLoginResult: ...
+    ) -> protos.user.user_pb2.GetUidByTokenResult: ...
+
     @abc.abstractmethod
-    def logout_user(
-        self,
+    def logout_user(self,
         request: protos.user.user_pb2.LogoutUserRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
+
     @abc.abstractmethod
-    def login_user(
-        self,
+    def login_user(self,
         request: protos.user.user_pb2.LoginUserRequest,
         context: grpc.ServicerContext,
     ) -> protos.user.user_pb2.LoginUserResult: ...
+
     @abc.abstractmethod
-    def create_user(
-        self,
+    def create_user(self,
         request: protos.user.user_pb2.CreateUserRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
+
     @abc.abstractmethod
-    def delete_user(
-        self,
+    def delete_user(self,
         request: protos.user.user_pb2.DeleteUserRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
+
 
 def add_UserServicer_to_server(servicer: UserServicer, server: grpc.Server) -> None: ...

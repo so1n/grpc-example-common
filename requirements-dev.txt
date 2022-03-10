@@ -9,11 +9,11 @@ coverage==5.5; (python_version >= "2.7" and python_full_version < "3.0.0") or (p
 distlib==0.3.4; python_full_version >= "3.6.1"
 filelock==3.4.2; python_version >= "3.7" and python_full_version >= "3.6.1"
 flake8==3.9.2; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
+grpc-stubs==1.24.8; python_version >= "3.6"
 grpcio-testing==1.43.0
 grpcio-tools==1.43.0; python_version >= "3.6"
 grpcio==1.43.0; python_version >= "3.6"
 identify==2.4.4; python_full_version >= "3.6.1"
-importlib-metadata==4.10.1; python_version < "3.8" and python_version >= "3.7" and python_full_version >= "3.6.2" and (python_version >= "3.7" and python_full_version < "3.0.0" and python_version < "3.8" or python_full_version >= "3.5.0" and python_version < "3.8" and python_version >= "3.7")
 iniconfig==1.1.1; python_version >= "3.6"
 isort==5.10.1; python_full_version >= "3.6.1" and python_version < "4.0"
 mccabe==0.6.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
@@ -38,9 +38,7 @@ pyyaml==6.0; python_version >= "3.6" and python_full_version >= "3.6.1"
 six==1.16.0; python_full_version >= "3.6.1" and python_version >= "3.6"
 toml==0.10.2; python_full_version >= "3.6.1" and python_version >= "3.6" and (python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version >= "3.6")
 tomli==1.2.3; python_version >= "3.6" and python_full_version >= "3.6.2"
-typed-ast==1.4.3; python_version < "3.8" and implementation_name == "cpython" and python_full_version >= "3.6.2" and python_version >= "3.5"
 types-futures==3.3.7; python_version >= "3.6"
-types-protobuf==3.19.4; python_version >= "3.6"
+types-protobuf==3.19.5; python_version >= "3.6"
 typing-extensions==4.0.1
 virtualenv==20.13.0; python_full_version >= "3.6.1"
-zipp==3.7.0; python_version < "3.8" and python_version >= "3.7" and python_full_version >= "3.6.2" and (python_version >= "3.7" and python_full_version < "3.0.0" and python_version < "3.8" or python_full_version >= "3.5.0" and python_version < "3.8" and python_version >= "3.7")
