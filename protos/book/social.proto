@@ -33,7 +33,7 @@ message CommentBookRequest {
 
 // get book comment
 message GetBookCommentRequest {
-  repeated string isbn = 1;
+  string isbn = 1;
   optional google.protobuf.Timestamp next_create_time = 2;
   optional int32 limit = 3;
 }
