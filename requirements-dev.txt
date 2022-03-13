@@ -9,7 +9,6 @@ coverage==5.5; (python_version >= "2.7" and python_full_version < "3.0.0") or (p
 distlib==0.3.4; python_full_version >= "3.6.1"
 filelock==3.4.2; python_version >= "3.7" and python_full_version >= "3.6.1"
 flake8==3.9.2; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
-grpc-stubs==1.24.8; python_version >= "3.6"
 grpcio-testing==1.43.0
 grpcio-tools==1.43.0; python_version >= "3.6"
 grpcio==1.43.0; python_version >= "3.6"

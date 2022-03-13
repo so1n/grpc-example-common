@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "grpc_example_common"
-version = "0.1.4"
+version = "0.1.5"
 description = ""
 authors = ["so1n <qaz6803609@163.com>"]
 readme = "./README.md"
@@ -12,7 +12,6 @@ homepage = "https://github.com/so1n/grpc-example-common"
 python = "^3.8"
 grpcio = "^1.43.0"
 grpcio-tools = "^1.43.0"
-grpc-stubs = "^1.24.8"
 
 [tool.poetry.dev-dependencies]
 black = "^21.6b0"
