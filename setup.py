@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setuptools.setup(
     name="grpc_example_common",
-    version="0.1.5",
+    version="0.1.6",
     author="so1n",
     author_email="",
     description="grpc example common",
