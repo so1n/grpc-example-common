@@ -34,12 +34,14 @@ class CustomerTopInterceptor(BaseInterceptor):
         if call_details.metadata is not None:
             call_details.metadata.append(("request_id", context_proxy.request_id))
         response: GRPC_RESPONSE = method(call_details, request_or_iterator)
-        status: status_pb2.Status = rpc_status.from_call(response)
-        for detail in status.details:
-            if detail.Is(Exec.DESCRIPTOR):
-                exec_instance: Exec = detail.Unpack(Exec())
-                exec_class: Type[Exception] = self.exc_dict.get(exec_instance.name) or RuntimeError
-                raise exec_class(exec_instance.msg)
-            else:
-                raise RuntimeError('Unexpected failure: %s' % detail)
+        status: Optional[status_pb2.Status] = rpc_status.from_call(response)
+        if status:
+            for detail in status.details:
+                if detail.Is(Exec.DESCRIPTOR):
+                    exec_instance: Exec = Exec()
+                    detail.Unpack(exec_instance)
+                    exec_class: Type[Exception] = self.exc_dict.get(exec_instance.name) or RuntimeError
+                    raise exec_class(exec_instance.msg)
+                else:
+                    raise RuntimeError('Unexpected failure: %s' % detail)
         return response
