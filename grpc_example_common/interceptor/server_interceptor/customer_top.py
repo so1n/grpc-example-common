@@ -3,6 +3,11 @@ import time
 from typing import Any, Callable, List, Tuple
 
 import grpc
+from grpc_status import rpc_status
+from google.rpc import code_pb2
+from google.rpc import status_pb2
+from google.protobuf import any_pb2
+from grpc_example_common.protos.common.exce_pb2 import Exec
 
 from grpc_example_common.helper.context import context_proxy
 
@@ -19,19 +24,28 @@ class CustomerTopInterceptor(BaseInterceptor):
         context: grpc.ServicerContext,
     ) -> Any:
         start_time: float = time.time()
-        return_initial_metadata: List[Tuple] = [("customer-user-agent", "Python3")]
         try:
             # run grpc handler
             return next_handler_method(request_proto_message, context)
         except Exception as e:
-            # Delivery exception
-            if self.metadata_dict.get("customer-user-agent", "") == "Python3":
-                return_initial_metadata.append(("exc_name", e.__class__.__name__))
-                return_initial_metadata.append(("exc_info", str(e)))
-            logging.exception(f"{context_proxy.method} request exc:{e.__class__.__name__} error:{e}")
+            detail = any_pb2.Any()
+            detail.Pack(
+                Exec(
+                    name=e.__class__.__name__,
+                    msg=str(e)
+                )
+            )
+            context.abort_with_status(
+                rpc_status.to_status(
+                    status_pb2.Status(
+                        code=code_pb2.RESOURCE_EXHAUSTED,
+                        message=str(e),
+                        details=[detail],
+                    )
+                )
+            )
             raise e
         finally:
-            context.send_initial_metadata(return_initial_metadata)
             logging.info(
                 f"Got Request. method:{self.method}, code:{context.code()}, detail:{context.details()}, duration:{time.time() - start_time}"
             )

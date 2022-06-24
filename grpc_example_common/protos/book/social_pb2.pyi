@@ -93,14 +93,13 @@ class GetBookCommentRequest(google.protobuf.message.Message):
     ISBN_FIELD_NUMBER: builtins.int
     NEXT_CREATE_TIME_FIELD_NUMBER: builtins.int
     LIMIT_FIELD_NUMBER: builtins.int
-    @property
-    def isbn(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    isbn: typing.Text = ...
     @property
     def next_create_time(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     limit: builtins.int = ...
     def __init__(self,
         *,
-        isbn : typing.Optional[typing.Iterable[typing.Text]] = ...,
+        isbn : typing.Text = ...,
         next_create_time : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
         limit : builtins.int = ...,
         ) -> None: ...

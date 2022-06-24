@@ -14,7 +14,7 @@ target_p='grpc_example_common'
 # project proto path
 source_p='protos'
 # service
-service_list=("book" "user")
+service_list=("book" "user" "common")
 
 rm -r "${target_p:?}/${source_p:?}"*
 mkdir -p "${target_p:?}/${source_p:?}"

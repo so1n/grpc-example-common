@@ -2,8 +2,12 @@ import inspect
 import logging
 from typing import Any, Callable, Dict, List, Optional, Type
 
+from google.rpc import status_pb2
+from grpc_example_common.protos.common.exce_pb2 import Exec
+
 from grpc_example_common.helper.context import context_proxy
 
+from grpc_status import rpc_status
 from .base import GRPC_RESPONSE, BaseInterceptor, ClientCallDetailsType
 
 logger: logging.Logger = logging.getLogger()
@@ -28,14 +32,14 @@ class CustomerTopInterceptor(BaseInterceptor):
         call_details: ClientCallDetailsType,
     ) -> GRPC_RESPONSE:
         if call_details.metadata is not None:
-            call_details.metadata.append(("customer-user-agent", "Python3"))  # type: ignore
             call_details.metadata.append(("request_id", context_proxy.request_id))
         response: GRPC_RESPONSE = method(call_details, request_or_iterator)
-        metadata_dict: dict = {item.key: item.value for item in response.initial_metadata()}
-        if metadata_dict.get("customer-user-agent") == "Python3":
-            exc_name: str = metadata_dict.get("exc_name", "")
-            exc_info: str = metadata_dict.get("exc_info", "")
-            exc: Optional[Type[Exception]] = self.exc_dict.get(exc_name)
-            if exc:
-                raise exc(exc_info)
+        status: status_pb2.Status = rpc_status.from_call(response)
+        for detail in status.details:
+            if detail.Is(Exec.DESCRIPTOR):
+                exec_instance: Exec = detail.Unpack(Exec())
+                exec_class: Type[Exception] = self.exc_dict.get(exec_instance.name) or RuntimeError
+                raise exec_class(exec_instance.msg)
+            else:
+                raise RuntimeError('Unexpected failure: %s' % detail)
         return response
