@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "grpc_example_common"
-version = "0.1.7"
+version = "0.1.7.1"
 description = ""
 authors = ["so1n <qaz6803609@163.com>"]
 readme = "./README.md"
