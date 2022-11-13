@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "grpc_example_common"
-version = "0.1.7.3"
+version = "0.1.7.4"
 description = ""
 authors = ["so1n <qaz6803609@163.com>"]
 readme = "./README.md"
@@ -10,11 +10,11 @@ homepage = "https://github.com/so1n/grpc-example-common"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-grpcio = "^1.43.0"
-grpcio-tools = "^1.43.0"
 grpc-stubs = "^1.24.8"
-grpcio-status = "^1.47.0"
-googleapis-common-protos = "^1.56.3"
+grpcio = "1.46.1"
+grpcio-tools = "^1.46.1"
+grpcio-status = "^1.46.1"
+googleapis-common-protos = "^1.56.4"
 
 [tool.poetry.dev-dependencies]
 black = "^21.6b0"
@@ -23,7 +23,7 @@ pytest = "^6.2.4"
 isort = "^5.9.1"
 pytest-mock = "^3.6.1"
 coverage = "^5.5"
-mypy-protobuf = "^2.5"
+mypy-protobuf = "^2.6"
 grpcio-testing = "^1.38.1"
 pytest-grpc = "^0.8.0"
 pre-commit = "^2.14.0"
