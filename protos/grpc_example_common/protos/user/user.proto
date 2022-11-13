@@ -47,7 +47,7 @@ message LoginUserRequest {
     (p2p_validate.rules).string.title = "UID",
     (p2p_validate.rules).string.description = "user union id"
   ];
-  string password = 3 [
+  string password = 2 [
     (p2p_validate.rules).string.description = "user password",
     (p2p_validate.rules).string.alias = "pw",
     (p2p_validate.rules).string.min_length = 6,
