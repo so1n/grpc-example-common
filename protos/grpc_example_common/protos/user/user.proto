@@ -1,8 +1,8 @@
 syntax = "proto3";
 package user;
 import "google/protobuf/empty.proto";
-import "common/api.proto";
-import "common/p2p_validate.proto";
+import "grpc_example_common/protos/common/api.proto";
+import "grpc_example_common/protos/common/p2p_validate.proto";
 
 
 // create user

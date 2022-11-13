@@ -5,51 +5,51 @@ isort:skip_file
 import abc
 import google.protobuf.empty_pb2
 import grpc
-import protos.book.manager_pb2
+import grpc_example_common.protos.book.manager_pb2
 
 class BookManagerStub:
     def __init__(self, channel: grpc.Channel) -> None: ...
     create_book: grpc.UnaryUnaryMultiCallable[
-        protos.book.manager_pb2.CreateBookRequest,
+        grpc_example_common.protos.book.manager_pb2.CreateBookRequest,
         google.protobuf.empty_pb2.Empty] = ...
 
     delete_book: grpc.UnaryUnaryMultiCallable[
-        protos.book.manager_pb2.DeleteBookRequest,
+        grpc_example_common.protos.book.manager_pb2.DeleteBookRequest,
         google.protobuf.empty_pb2.Empty] = ...
 
     get_book: grpc.UnaryUnaryMultiCallable[
-        protos.book.manager_pb2.GetBookRequest,
-        protos.book.manager_pb2.GetBookResult] = ...
+        grpc_example_common.protos.book.manager_pb2.GetBookRequest,
+        grpc_example_common.protos.book.manager_pb2.GetBookResult] = ...
 
     get_book_list: grpc.UnaryUnaryMultiCallable[
-        protos.book.manager_pb2.GetBookListRequest,
-        protos.book.manager_pb2.GetBookListResult] = ...
+        grpc_example_common.protos.book.manager_pb2.GetBookListRequest,
+        grpc_example_common.protos.book.manager_pb2.GetBookListResult] = ...
 
 
 class BookManagerServicer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def create_book(self,
-        request: protos.book.manager_pb2.CreateBookRequest,
+        request: grpc_example_common.protos.book.manager_pb2.CreateBookRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
 
     @abc.abstractmethod
     def delete_book(self,
-        request: protos.book.manager_pb2.DeleteBookRequest,
+        request: grpc_example_common.protos.book.manager_pb2.DeleteBookRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
 
     @abc.abstractmethod
     def get_book(self,
-        request: protos.book.manager_pb2.GetBookRequest,
+        request: grpc_example_common.protos.book.manager_pb2.GetBookRequest,
         context: grpc.ServicerContext,
-    ) -> protos.book.manager_pb2.GetBookResult: ...
+    ) -> grpc_example_common.protos.book.manager_pb2.GetBookResult: ...
 
     @abc.abstractmethod
     def get_book_list(self,
-        request: protos.book.manager_pb2.GetBookListRequest,
+        request: grpc_example_common.protos.book.manager_pb2.GetBookListRequest,
         context: grpc.ServicerContext,
-    ) -> protos.book.manager_pb2.GetBookListResult: ...
+    ) -> grpc_example_common.protos.book.manager_pb2.GetBookListResult: ...
 
 
 def add_BookManagerServicer_to_server(servicer: BookManagerServicer, server: grpc.Server) -> None: ...
