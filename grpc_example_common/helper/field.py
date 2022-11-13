@@ -4,7 +4,10 @@ from decimal import Decimal
 from typing import Any, Optional
 
 from google.protobuf.message import Message  # type: ignore
-from google.protobuf.pyext._message import RepeatedCompositeContainer, RepeatedScalarContainer  # type: ignore
+try:
+    from google.protobuf.pyext._message import RepeatedCompositeContainer, RepeatedScalarContainer  # type: ignore
+except ModuleNotFoundError:
+    from google._upb._message import RepeatedCompositeContainer, RepeatedScalarContainer
 from google.protobuf.timestamp_pb2 import Timestamp  # type: ignore
 
 
