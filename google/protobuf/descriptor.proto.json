@@ -1,0 +1,14 @@
+{
+  "package": "google.protobuf",
+  "filename": "google/protobuf/descriptor.proto",
+  "dependencies": [],
+  "options": {
+    "java_package": "com.google.protobuf",
+    "java_outer_classname": "DescriptorProtos",
+    "optimize_for": "SPEED",
+    "go_package": "google.golang.org/protobuf/types/descriptorpb",
+    "cc_enable_arenas": "true",
+    "objc_class_prefix": "GPB",
+    "csharp_namespace": "Google.Protobuf.Reflection"
+  }
+}

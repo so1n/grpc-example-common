@@ -3,7 +3,7 @@
 import grpc
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from . import user_pb2 as protos_dot_user_dot_user__pb2
+from grpc_example_common.protos.user import user_pb2 as grpc__example__common_dot_protos_dot_user_dot_user__pb2
 
 
 class UserStub(object):
@@ -17,27 +17,27 @@ class UserStub(object):
         """
         self.get_uid_by_token = channel.unary_unary(
                 '/user.User/get_uid_by_token',
-                request_serializer=protos_dot_user_dot_user__pb2.GetUidByTokenRequest.SerializeToString,
-                response_deserializer=protos_dot_user_dot_user__pb2.GetUidByTokenResult.FromString,
+                request_serializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.GetUidByTokenRequest.SerializeToString,
+                response_deserializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.GetUidByTokenResult.FromString,
                 )
         self.logout_user = channel.unary_unary(
                 '/user.User/logout_user',
-                request_serializer=protos_dot_user_dot_user__pb2.LogoutUserRequest.SerializeToString,
+                request_serializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.LogoutUserRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.login_user = channel.unary_unary(
                 '/user.User/login_user',
-                request_serializer=protos_dot_user_dot_user__pb2.LoginUserRequest.SerializeToString,
-                response_deserializer=protos_dot_user_dot_user__pb2.LoginUserResult.FromString,
+                request_serializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.LoginUserRequest.SerializeToString,
+                response_deserializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.LoginUserResult.FromString,
                 )
         self.create_user = channel.unary_unary(
                 '/user.User/create_user',
-                request_serializer=protos_dot_user_dot_user__pb2.CreateUserRequest.SerializeToString,
+                request_serializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.CreateUserRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.delete_user = channel.unary_unary(
                 '/user.User/delete_user',
-                request_serializer=protos_dot_user_dot_user__pb2.DeleteUserRequest.SerializeToString,
+                request_serializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.DeleteUserRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
 
@@ -80,27 +80,27 @@ def add_UserServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'get_uid_by_token': grpc.unary_unary_rpc_method_handler(
                     servicer.get_uid_by_token,
-                    request_deserializer=protos_dot_user_dot_user__pb2.GetUidByTokenRequest.FromString,
-                    response_serializer=protos_dot_user_dot_user__pb2.GetUidByTokenResult.SerializeToString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.GetUidByTokenRequest.FromString,
+                    response_serializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.GetUidByTokenResult.SerializeToString,
             ),
             'logout_user': grpc.unary_unary_rpc_method_handler(
                     servicer.logout_user,
-                    request_deserializer=protos_dot_user_dot_user__pb2.LogoutUserRequest.FromString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.LogoutUserRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'login_user': grpc.unary_unary_rpc_method_handler(
                     servicer.login_user,
-                    request_deserializer=protos_dot_user_dot_user__pb2.LoginUserRequest.FromString,
-                    response_serializer=protos_dot_user_dot_user__pb2.LoginUserResult.SerializeToString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.LoginUserRequest.FromString,
+                    response_serializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.LoginUserResult.SerializeToString,
             ),
             'create_user': grpc.unary_unary_rpc_method_handler(
                     servicer.create_user,
-                    request_deserializer=protos_dot_user_dot_user__pb2.CreateUserRequest.FromString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.CreateUserRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'delete_user': grpc.unary_unary_rpc_method_handler(
                     servicer.delete_user,
-                    request_deserializer=protos_dot_user_dot_user__pb2.DeleteUserRequest.FromString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_user_dot_user__pb2.DeleteUserRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
@@ -125,8 +125,8 @@ class User(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user.User/get_uid_by_token',
-            protos_dot_user_dot_user__pb2.GetUidByTokenRequest.SerializeToString,
-            protos_dot_user_dot_user__pb2.GetUidByTokenResult.FromString,
+            grpc__example__common_dot_protos_dot_user_dot_user__pb2.GetUidByTokenRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_user_dot_user__pb2.GetUidByTokenResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -142,7 +142,7 @@ class User(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user.User/logout_user',
-            protos_dot_user_dot_user__pb2.LogoutUserRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_user_dot_user__pb2.LogoutUserRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -159,8 +159,8 @@ class User(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user.User/login_user',
-            protos_dot_user_dot_user__pb2.LoginUserRequest.SerializeToString,
-            protos_dot_user_dot_user__pb2.LoginUserResult.FromString,
+            grpc__example__common_dot_protos_dot_user_dot_user__pb2.LoginUserRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_user_dot_user__pb2.LoginUserResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -176,7 +176,7 @@ class User(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user.User/create_user',
-            protos_dot_user_dot_user__pb2.CreateUserRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_user_dot_user__pb2.CreateUserRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -193,7 +193,7 @@ class User(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/user.User/delete_user',
-            protos_dot_user_dot_user__pb2.DeleteUserRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_user_dot_user__pb2.DeleteUserRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

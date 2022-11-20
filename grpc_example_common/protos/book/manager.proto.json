@@ -1,0 +1,201 @@
+{
+  "package": "book_manager",
+  "filename": "grpc_example_common/protos/book/manager.proto",
+  "dependencies": [
+    "google/protobuf/empty.proto",
+    "google/protobuf/timestamp.proto"
+  ],
+  "message_type": [
+    {
+      "name": "CreateBookRequest",
+      "field": [
+        {
+          "name": "isbn",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "isbn"
+        },
+        {
+          "name": "book_name",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookName"
+        },
+        {
+          "name": "book_author",
+          "number": 3,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookAuthor"
+        },
+        {
+          "name": "book_desc",
+          "number": 4,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookDesc"
+        },
+        {
+          "name": "book_url",
+          "number": 5,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookUrl"
+        }
+      ]
+    },
+    {
+      "name": "DeleteBookRequest",
+      "field": [
+        {
+          "name": "isbn",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "isbn"
+        }
+      ]
+    },
+    {
+      "name": "GetBookRequest",
+      "field": [
+        {
+          "name": "isbn",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "isbn"
+        }
+      ]
+    },
+    {
+      "name": "GetBookResult",
+      "field": [
+        {
+          "name": "isbn",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "isbn"
+        },
+        {
+          "name": "book_name",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookName"
+        },
+        {
+          "name": "book_author",
+          "number": 3,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookAuthor"
+        },
+        {
+          "name": "book_desc",
+          "number": 4,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookDesc"
+        },
+        {
+          "name": "book_url",
+          "number": 5,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "bookUrl"
+        },
+        {
+          "name": "create_time",
+          "number": 6,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_MESSAGE",
+          "typeName": ".google.protobuf.Timestamp",
+          "jsonName": "createTime"
+        },
+        {
+          "name": "update_time",
+          "number": 7,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_MESSAGE",
+          "typeName": ".google.protobuf.Timestamp",
+          "jsonName": "updateTime"
+        }
+      ]
+    },
+    {
+      "name": "GetBookListRequest",
+      "field": [
+        {
+          "name": "next_create_time",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_MESSAGE",
+          "typeName": ".google.protobuf.Timestamp",
+          "oneofIndex": 0,
+          "jsonName": "nextCreateTime",
+          "proto3Optional": true
+        },
+        {
+          "name": "limit",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_INT32",
+          "jsonName": "limit"
+        }
+      ],
+      "oneofDecl": [
+        {
+          "name": "_next_create_time"
+        }
+      ]
+    },
+    {
+      "name": "GetBookListResult",
+      "field": [
+        {
+          "name": "result",
+          "number": 1,
+          "label": "LABEL_REPEATED",
+          "type": "TYPE_MESSAGE",
+          "typeName": ".book_manager.GetBookResult",
+          "jsonName": "result"
+        }
+      ]
+    }
+  ],
+  "service": [
+    {
+      "name": "BookManager",
+      "method": [
+        {
+          "name": "create_book",
+          "inputType": ".book_manager.CreateBookRequest",
+          "outputType": ".google.protobuf.Empty"
+        },
+        {
+          "name": "delete_book",
+          "inputType": ".book_manager.DeleteBookRequest",
+          "outputType": ".google.protobuf.Empty"
+        },
+        {
+          "name": "get_book",
+          "inputType": ".book_manager.GetBookRequest",
+          "outputType": ".book_manager.GetBookResult"
+        },
+        {
+          "name": "get_book_list",
+          "inputType": ".book_manager.GetBookListRequest",
+          "outputType": ".book_manager.GetBookListResult"
+        }
+      ]
+    }
+  ],
+  "public_dependency": [],
+  "enum_type": [],
+  "extension": [],
+  "options": {}
+}

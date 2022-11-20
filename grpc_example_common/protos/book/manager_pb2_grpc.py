@@ -3,7 +3,7 @@
 import grpc
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from . import manager_pb2 as protos_dot_book_dot_manager__pb2
+from grpc_example_common.protos.book import manager_pb2 as grpc__example__common_dot_protos_dot_book_dot_manager__pb2
 
 
 class BookManagerStub(object):
@@ -17,23 +17,23 @@ class BookManagerStub(object):
         """
         self.create_book = channel.unary_unary(
                 '/book_manager.BookManager/create_book',
-                request_serializer=protos_dot_book_dot_manager__pb2.CreateBookRequest.SerializeToString,
+                request_serializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.CreateBookRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.delete_book = channel.unary_unary(
                 '/book_manager.BookManager/delete_book',
-                request_serializer=protos_dot_book_dot_manager__pb2.DeleteBookRequest.SerializeToString,
+                request_serializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.DeleteBookRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.get_book = channel.unary_unary(
                 '/book_manager.BookManager/get_book',
-                request_serializer=protos_dot_book_dot_manager__pb2.GetBookRequest.SerializeToString,
-                response_deserializer=protos_dot_book_dot_manager__pb2.GetBookResult.FromString,
+                request_serializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookRequest.SerializeToString,
+                response_deserializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookResult.FromString,
                 )
         self.get_book_list = channel.unary_unary(
                 '/book_manager.BookManager/get_book_list',
-                request_serializer=protos_dot_book_dot_manager__pb2.GetBookListRequest.SerializeToString,
-                response_deserializer=protos_dot_book_dot_manager__pb2.GetBookListResult.FromString,
+                request_serializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookListRequest.SerializeToString,
+                response_deserializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookListResult.FromString,
                 )
 
 
@@ -69,23 +69,23 @@ def add_BookManagerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'create_book': grpc.unary_unary_rpc_method_handler(
                     servicer.create_book,
-                    request_deserializer=protos_dot_book_dot_manager__pb2.CreateBookRequest.FromString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.CreateBookRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'delete_book': grpc.unary_unary_rpc_method_handler(
                     servicer.delete_book,
-                    request_deserializer=protos_dot_book_dot_manager__pb2.DeleteBookRequest.FromString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.DeleteBookRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'get_book': grpc.unary_unary_rpc_method_handler(
                     servicer.get_book,
-                    request_deserializer=protos_dot_book_dot_manager__pb2.GetBookRequest.FromString,
-                    response_serializer=protos_dot_book_dot_manager__pb2.GetBookResult.SerializeToString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookRequest.FromString,
+                    response_serializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookResult.SerializeToString,
             ),
             'get_book_list': grpc.unary_unary_rpc_method_handler(
                     servicer.get_book_list,
-                    request_deserializer=protos_dot_book_dot_manager__pb2.GetBookListRequest.FromString,
-                    response_serializer=protos_dot_book_dot_manager__pb2.GetBookListResult.SerializeToString,
+                    request_deserializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookListRequest.FromString,
+                    response_serializer=grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookListResult.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -109,7 +109,7 @@ class BookManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/book_manager.BookManager/create_book',
-            protos_dot_book_dot_manager__pb2.CreateBookRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_book_dot_manager__pb2.CreateBookRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -126,7 +126,7 @@ class BookManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/book_manager.BookManager/delete_book',
-            protos_dot_book_dot_manager__pb2.DeleteBookRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_book_dot_manager__pb2.DeleteBookRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -143,8 +143,8 @@ class BookManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/book_manager.BookManager/get_book',
-            protos_dot_book_dot_manager__pb2.GetBookRequest.SerializeToString,
-            protos_dot_book_dot_manager__pb2.GetBookResult.FromString,
+            grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -160,7 +160,7 @@ class BookManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/book_manager.BookManager/get_book_list',
-            protos_dot_book_dot_manager__pb2.GetBookListRequest.SerializeToString,
-            protos_dot_book_dot_manager__pb2.GetBookListResult.FromString,
+            grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookListRequest.SerializeToString,
+            grpc__example__common_dot_protos_dot_book_dot_manager__pb2.GetBookListResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

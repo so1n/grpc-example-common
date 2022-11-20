@@ -17,6 +17,7 @@ source_p='protos'
 rm -r "${target_p:?}/${source_p:?}"*
 
 ${VENV_PREFIX}python -m grpc_tools.protoc \
+  --plugin=protoc-gen-custom-plugin=./example_plugin.py --custom-plugin_out=. \
   --mypy_grpc_out=./ \
   --mypy_out=./ \
   --python_out=./ \

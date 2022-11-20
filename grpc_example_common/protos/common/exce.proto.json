@@ -1,0 +1,33 @@
+{
+  "package": "exec",
+  "filename": "grpc_example_common/protos/common/exce.proto",
+  "dependencies": [
+    "google/protobuf/empty.proto"
+  ],
+  "message_type": [
+    {
+      "name": "Exec",
+      "field": [
+        {
+          "name": "name",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "name"
+        },
+        {
+          "name": "msg",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "msg"
+        }
+      ]
+    }
+  ],
+  "service": [],
+  "public_dependency": [],
+  "enum_type": [],
+  "extension": [],
+  "options": {}
+}

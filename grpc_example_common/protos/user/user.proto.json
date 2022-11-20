@@ -1,0 +1,171 @@
+{
+  "package": "user",
+  "filename": "grpc_example_common/protos/user/user.proto",
+  "dependencies": [
+    "google/protobuf/empty.proto"
+  ],
+  "message_type": [
+    {
+      "name": "CreateUserRequest",
+      "field": [
+        {
+          "name": "uid",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "uid"
+        },
+        {
+          "name": "user_name",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "userName"
+        },
+        {
+          "name": "password",
+          "number": 3,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "password"
+        }
+      ]
+    },
+    {
+      "name": "DeleteUserRequest",
+      "field": [
+        {
+          "name": "uid",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "uid"
+        }
+      ]
+    },
+    {
+      "name": "LoginUserRequest",
+      "field": [
+        {
+          "name": "uid",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "uid"
+        },
+        {
+          "name": "password",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "password"
+        }
+      ]
+    },
+    {
+      "name": "LoginUserResult",
+      "field": [
+        {
+          "name": "uid",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "uid"
+        },
+        {
+          "name": "user_name",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "userName"
+        },
+        {
+          "name": "token",
+          "number": 3,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "token"
+        }
+      ]
+    },
+    {
+      "name": "LogoutUserRequest",
+      "field": [
+        {
+          "name": "uid",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "uid"
+        },
+        {
+          "name": "token",
+          "number": 2,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "token"
+        }
+      ]
+    },
+    {
+      "name": "GetUidByTokenRequest",
+      "field": [
+        {
+          "name": "token",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "token"
+        }
+      ]
+    },
+    {
+      "name": "GetUidByTokenResult",
+      "field": [
+        {
+          "name": "uid",
+          "number": 1,
+          "label": "LABEL_OPTIONAL",
+          "type": "TYPE_STRING",
+          "jsonName": "uid"
+        }
+      ]
+    }
+  ],
+  "service": [
+    {
+      "name": "User",
+      "method": [
+        {
+          "name": "get_uid_by_token",
+          "inputType": ".user.GetUidByTokenRequest",
+          "outputType": ".user.GetUidByTokenResult"
+        },
+        {
+          "name": "logout_user",
+          "inputType": ".user.LogoutUserRequest",
+          "outputType": ".google.protobuf.Empty"
+        },
+        {
+          "name": "login_user",
+          "inputType": ".user.LoginUserRequest",
+          "outputType": ".user.LoginUserResult"
+        },
+        {
+          "name": "create_user",
+          "inputType": ".user.CreateUserRequest",
+          "outputType": ".google.protobuf.Empty"
+        },
+        {
+          "name": "delete_user",
+          "inputType": ".user.DeleteUserRequest",
+          "outputType": ".google.protobuf.Empty"
+        }
+      ]
+    }
+  ],
+  "public_dependency": [],
+  "enum_type": [],
+  "extension": [],
+  "options": {}
+}
