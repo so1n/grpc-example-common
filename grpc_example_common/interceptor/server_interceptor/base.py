@@ -1,7 +1,7 @@
 import abc
 import logging
 import uuid
-from typing import Any, Callable, Tuple
+from typing import Any, Callable, Tuple, Optional
 
 import grpc
 from grpc_example_common.helper.context import WithContext, context_proxy
@@ -72,10 +72,12 @@ class BaseInterceptor(grpc.ServerInterceptor):
 
     def intercept_service(
         self,
-        continuation: Callable[[grpc.HandlerCallDetails], grpc.RpcMethodHandler],
+        continuation: Callable[[grpc.HandlerCallDetails], Optional[grpc.RpcMethodHandler]],
         handler_call_details: grpc.HandlerCallDetails,
-    ) -> grpc.RpcMethodHandler:
-        next_handler: grpc.RpcMethodHandler = continuation(handler_call_details)
+    ) -> Optional[grpc.RpcMethodHandler]:
+        next_handler: Optional[grpc.RpcMethodHandler] = continuation(handler_call_details)
+        if next_handler is None:
+            return None
         handler_factory, next_handler_method, grpc_type = _get_factory_and_method(next_handler)
 
         def invoke_intercept_method(request_proto_message: Any, context: grpc.ServicerContext) -> Any:
